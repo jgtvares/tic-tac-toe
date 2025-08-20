@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    groups:
+      actions-updates:
+        patterns:
+          - '*'
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore
+      include: scope
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      lower-risk-updates:
+        update-types:
+          - patch
+          - minor
+      security-updates:
+        applies-to: security-updates
+        dependency-type: development
